@@ -1,0 +1,67 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "AlphabeticalOrder",
+            "request": "launch",
+            "mainClass": "Week2.AlphabeticalOrder",
+            "projectName": "College_416c21ab"
+        },
+        {
+            "type": "java",
+            "name": "PalindromeNumber",
+            "request": "launch",
+            "mainClass": "PalindromeNumber",
+            "projectName": "College_416c21ab"
+        },
+        {
+            "type": "java",
+            "name": "LeapYear",
+            "request": "launch",
+            "mainClass": "LeapYear",
+            "projectName": "College_416c21ab"
+        },
+        {
+            "type": "java",
+            "name": "EvenNumbers",
+            "request": "launch",
+            "mainClass": "EvenNumbers",
+            "projectName": "College_416c21ab"
+        },
+        {
+            "type": "java",
+            "name": "SwapNumbers",
+            "request": "launch",
+            "mainClass": "SwapNumbers",
+            "projectName": "College_416c21ab"
+        },
+        {
+            "type": "java",
+            "name": "SumTwoIntegers",
+            "request": "launch",
+            "mainClass": "SumTwoIntegers",
+            "projectName": "College_416c21ab"
+        },
+        {
+            "type": "java",
+            "name": "AsciiCode",
+            "request": "launch",
+            "mainClass": "AsciiCode",
+            "projectName": "College_416c21ab"
+        },
+        {
+            "type": "java",
+            "name": "CommandLineName",
+            "request": "launch",
+            "mainClass": "CommandLineName",
+            "projectName": "College_416c21ab"
+        },
+        {
+            "type": "java",
+            "name": "Launch with Arguments Prompt",
+            "request": "launch",
+            "mainClass": "",
+            "args": "${command:SpecifyProgramArgs}"
+        }
+    ]
+}

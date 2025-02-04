@@ -1,0 +1,53 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "StackQueueExample",
+            "request": "launch",
+            "mainClass": "StackQueueExample",
+            "projectName": "Week2_11fe744e"
+        },
+        {
+            "type": "java",
+            "name": "TokenizerExample",
+            "request": "launch",
+            "mainClass": "TokenizerExample",
+            "projectName": "Week2_11fe744e"
+        },
+        {
+            "type": "java",
+            "name": "AsciiToChar",
+            "request": "launch",
+            "mainClass": "AsciiToChar",
+            "projectName": "Week2_11fe744e"
+        },
+        {
+            "type": "java",
+            "name": "FloydsTriangle",
+            "request": "launch",
+            "mainClass": "FloydsTriangle",
+            "projectName": "Week2_11fe744e"
+        },
+        {
+            "type": "java",
+            "name": "ColorCode",
+            "request": "launch",
+            "mainClass": "ColorCode",
+            "projectName": "Week2_11fe744e"
+        },
+        {
+            "type": "java",
+            "name": "AlphabeticalOrder",
+            "request": "launch",
+            "mainClass": "AlphabeticalOrder",
+            "projectName": "Week2_11fe744e"
+        },
+        {
+            "type": "java",
+            "name": "Launch with Arguments Prompt",
+            "request": "launch",
+            "mainClass": "",
+            "args": "${command:SpecifyProgramArgs}"
+        }
+    ]
+}

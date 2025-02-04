@@ -1,0 +1,452 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\Devan> mysql -u root
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+PS C:\Users\Devan> mysql -u root -p Devansh2005@#
+Enter password: *************
+ERROR 1049 (42000): Unknown database 'devansh2005@#'
+PS C:\Users\Devan> mysql -u root -p Devansh2005@#
+Enter password: *************
+ERROR 1049 (42000): Unknown database 'devansh2005@#'
+PS C:\Users\Devan> mysql -u root -p Devansh2005@#
+Enter password: *******
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+PS C:\Users\Devan> mysql -u root -p Devansh2005@#
+Enter password: *******
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+PS C:\Users\Devan> mysql -u root
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+PS C:\Users\Devan> mysql -u root -p
+Enter password: *************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 9.0.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| college            |
+| ecommerce          |
+| food               |
+| images             |
+| information_schema |
+| microservices      |
+| mysql              |
+| performance_schema |
+| reactive_spring    |
+| shoppingcart       |
+| tasks              |
+| users              |
++--------------------+
+12 rows in set (0.01 sec)
+
+mysql> use college;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| appointments      |
+| billing           |
+| doctors           |
+| patients          |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> desc billing
+    -> ;
++------------------+------------------------+------+-----+-------------------+-----------------------------------------------+
+| Field            | Type                   | Null | Key | Default           | Extra                                         |
++------------------+------------------------+------+-----+-------------------+-----------------------------------------------+
+| bill_id          | int                    | NO   | PRI | NULL              | auto_increment                                |
+| patient_id       | int                    | NO   | MUL | NULL              |                                               |
+| medicine_charges | decimal(10,2)          | YES  |     | 0.00              |                                               |
+| other_charges    | decimal(10,2)          | YES  |     | 0.00              |                                               |
+| payment_status   | enum('Pending','Paid') | YES  |     | Pending           |                                               |
+| payment_date     | date                   | YES  |     | NULL              |                                               |
+| created_at       | timestamp              | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED                             |
+| updated_at       | timestamp              | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
++------------------+------------------------+------+-----+-------------------+-----------------------------------------------+
+8 rows in set (0.00 sec)
+
+mysql> use dbmslab;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_dbmslab |
++-------------------+
+| appointments      |
+| doctors           |
+| patients          |
++-------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc appointments;
++------------------+------+------+-----+---------+----------------+
+| Field            | Type | Null | Key | Default | Extra          |
++------------------+------+------+-----+---------+----------------+
+| appointment_id   | int  | NO   | PRI | NULL    | auto_increment |
+| doctor_id        | int  | YES  | MUL | NULL    |                |
+| patient_id       | int  | YES  | MUL | NULL    |                |
+| appointment_date | date | YES  |     | NULL    |                |
+| symptoms         | text | YES  |     | NULL    |                |
++------------------+------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc doctors;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| doctor_id    | int          | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100) | NO   |     | NULL    |                |
+| specialty    | varchar(50)  | YES  |     | NULL    |                |
+| phone_number | varchar(15)  | YES  |     | NULL    |                |
+| email        | varchar(100) | NO   | UNI | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc patients;
++--------------+-----------------------+------+-----+---------+----------------+
+| Field        | Type                  | Null | Key | Default | Extra          |
++--------------+-----------------------+------+-----+---------+----------------+
+| patient_id   | int                   | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100)          | NO   |     | NULL    |                |
+| age          | int                   | YES  |     | NULL    |                |
+| gender       | enum('male','female') | YES  |     | NULL    |                |
+| phone_number | varchar(15)           | YES  |     | NULL    |                |
+| email        | varchar(100)          | YES  | UNI | NULL    |                |
++--------------+-----------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> alter table patients
+    -> modify phone_number varchar(10);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc patients;
++--------------+-----------------------+------+-----+---------+----------------+
+| Field        | Type                  | Null | Key | Default | Extra          |
++--------------+-----------------------+------+-----+---------+----------------+
+| patient_id   | int                   | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100)          | NO   |     | NULL    |                |
+| age          | int                   | YES  |     | NULL    |                |
+| gender       | enum('male','female') | YES  |     | NULL    |                |
+| phone_number | varchar(10)           | YES  |     | NULL    |                |
+| email        | varchar(100)          | YES  | UNI | NULL    |                |
++--------------+-----------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> alter table doctors
+    -> add column address varchar(255);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc doctors;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| doctor_id    | int          | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100) | NO   |     | NULL    |                |
+| specialty    | varchar(50)  | YES  |     | NULL    |                |
+| phone_number | varchar(15)  | YES  |     | NULL    |                |
+| email        | varchar(100) | NO   | UNI | NULL    |                |
+| address      | varchar(255) | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> alter table doctors
+    -> drop column address;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc doctors;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| doctor_id    | int          | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100) | NO   |     | NULL    |                |
+| specialty    | varchar(50)  | YES  |     | NULL    |                |
+| phone_number | varchar(15)  | YES  |     | NULL    |                |
+| email        | varchar(100) | NO   | UNI | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc patients;
++--------------+-----------------------+------+-----+---------+----------------+
+| Field        | Type                  | Null | Key | Default | Extra          |
++--------------+-----------------------+------+-----+---------+----------------+
+| patient_id   | int                   | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100)          | NO   |     | NULL    |                |
+| age          | int                   | YES  |     | NULL    |                |
+| gender       | enum('male','female') | YES  |     | NULL    |                |
+| phone_number | varchar(10)           | YES  |     | NULL    |                |
+| email        | varchar(100)          | YES  | UNI | NULL    |                |
++--------------+-----------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> desc doctors;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| doctor_id    | int          | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100) | NO   |     | NULL    |                |
+| specialty    | varchar(50)  | YES  |     | NULL    |                |
+| phone_number | varchar(15)  | YES  |     | NULL    |                |
+| email        | varchar(100) | NO   | UNI | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into doctors(name, speciality, phone_number, email) values("Khali", "physiotherapy", "9870385493", "khali@gmail.com");
+ERROR 1054 (42S22): Unknown column 'speciality' in 'field list'
+mysql> insert into doctors(name, specialty, phone_number, email) values("Khali", "physiotherapy", "9870385493", "khali@gmail.com");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from doctors;
++-----------+-------+---------------+--------------+-----------------+
+| doctor_id | name  | specialty     | phone_number | email           |
++-----------+-------+---------------+--------------+-----------------+
+|         1 | Khali | physiotherapy | 9870385493   | khali@gmail.com |
++-----------+-------+---------------+--------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> truncate doctors;
+ERROR 1701 (42000): Cannot truncate a table referenced in a foreign key constraint (`dbmslab`.`appointments`, CONSTRAINT `appointments_ibfk_1`)
+mysql> truncate table doctors;
+ERROR 1701 (42000): Cannot truncate a table referenced in a foreign key constraint (`dbmslab`.`appointments`, CONSTRAINT `appointments_ibfk_1`)
+mysql> set foreign_key_checks = 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql>
+mysql>
+mysql> truncate doctors;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from doctors;
+Empty set (0.00 sec)
+
+mysql> desc doctors;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| doctor_id    | int          | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100) | NO   |     | NULL    |                |
+| specialty    | varchar(50)  | YES  |     | NULL    |                |
+| phone_number | varchar(15)  | YES  |     | NULL    |                |
+| email        | varchar(100) | NO   | UNI | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc patients;
++--------------+-----------------------+------+-----+---------+----------------+
+| Field        | Type                  | Null | Key | Default | Extra          |
++--------------+-----------------------+------+-----+---------+----------------+
+| patient_id   | int                   | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100)          | NO   |     | NULL    |                |
+| age          | int                   | YES  |     | NULL    |                |
+| gender       | enum('male','female') | YES  |     | NULL    |                |
+| phone_number | varchar(10)           | YES  |     | NULL    |                |
+| email        | varchar(100)          | YES  | UNI | NULL    |                |
++--------------+-----------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> desc appointments;
++------------------+------+------+-----+---------+----------------+
+| Field            | Type | Null | Key | Default | Extra          |
++------------------+------+------+-----+---------+----------------+
+| appointment_id   | int  | NO   | PRI | NULL    | auto_increment |
+| doctor_id        | int  | YES  | MUL | NULL    |                |
+| patient_id       | int  | YES  | MUL | NULL    |                |
+| appointment_date | date | YES  |     | NULL    |                |
+| symptoms         | text | YES  |     | NULL    |                |
++------------------+------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> create table billing (
+    ->  bill_id int auto_increment primary key,
+    ->  patient_id int not null,
+    ->  appointment_id int not null,
+    -> medicine_charges decimal(10, 2) default 0.00,
+    -> other_charges deciaml(10, 2) default 0.00,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'deciaml(10, 2) default 0.00,' at line 6
+mysql> show tables;
++-------------------+
+| Tables_in_dbmslab |
++-------------------+
+| appointments      |
+| billing           |
+| doctors           |
+| patients          |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> desc doctors;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| doctor_id    | int          | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100) | NO   |     | NULL    |                |
+| specialty    | varchar(50)  | YES  |     | NULL    |                |
+| phone_number | varchar(15)  | YES  |     | NULL    |                |
+| email        | varchar(100) | NO   | UNI | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc patients;
++--------------+-----------------------+------+-----+---------+----------------+
+| Field        | Type                  | Null | Key | Default | Extra          |
++--------------+-----------------------+------+-----+---------+----------------+
+| patient_id   | int                   | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(100)          | NO   |     | NULL    |                |
+| age          | int                   | YES  |     | NULL    |                |
+| gender       | enum('male','female') | YES  |     | NULL    |                |
+| phone_number | varchar(10)           | YES  |     | NULL    |                |
+| email        | varchar(100)          | YES  | UNI | NULL    |                |
++--------------+-----------------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> desc appointments;
++------------------+------+------+-----+---------+----------------+
+| Field            | Type | Null | Key | Default | Extra          |
++------------------+------+------+-----+---------+----------------+
+| appointment_id   | int  | NO   | PRI | NULL    | auto_increment |
+| doctor_id        | int  | YES  | MUL | NULL    |                |
+| patient_id       | int  | YES  | MUL | NULL    |                |
+| appointment_date | date | YES  |     | NULL    |                |
+| symptoms         | text | YES  |     | NULL    |                |
++------------------+------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> desc billing;
++------------------+---------------+------+-----+---------+----------------+
+| Field            | Type          | Null | Key | Default | Extra          |
++------------------+---------------+------+-----+---------+----------------+
+| bill_id          | int           | NO   | PRI | NULL    | auto_increment |
+| patient_id       | int           | NO   | MUL | NULL    |                |
+| appointment_id   | int           | NO   | MUL | NULL    |                |
+| medicine_charges | decimal(10,2) | YES  |     | 0.00    |                |
+| other_charges    | decimal(10,2) | YES  |     | 0.00    |                |
+| payment_date     | date          | YES  |     | NULL    |                |
++------------------+---------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from patients;
++------------+-------------------+------+--------+--------------+----------------------------+
+| patient_id | name              | age  | gender | phone_number | email                      |
++------------+-------------------+------+--------+--------------+----------------------------+
+|          1 | Alice Johnson     |   30 | female | 1234509876   | alice.johnson@mail.com     |
+|          2 | Bob Miller        |   45 | male   | 2345609876   | bob.miller@mail.com        |
+|          3 | Cathy Lee         |   29 | female | 3456709876   | cathy.lee@mail.com         |
+|          4 | Derek Smith       |   50 | male   | 4567809876   | derek.smith@mail.com       |
+|          5 | Eva Brown         |   35 | female | 5678909876   | eva.brown@mail.com         |
+|          6 | Frank Taylor      |   40 | male   | 6789019876   | frank.taylor@mail.com      |
+|          7 | Grace Wilson      |   28 | female | 7890129876   | grace.wilson@mail.com      |
+|          8 | Harry White       |   60 | male   | 8901239876   | harry.white@mail.com       |
+|          9 | Isabella Martinez |   33 | female | 9012349876   | isabella.martinez@mail.com |
+|         10 | Jack Harris       |   55 | male   | 1023459876   | jack.harris@mail.com       |
++------------+-------------------+------+--------+--------------+----------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from doctors;
++-----------+----------------------+------------------+--------------+-------------------------------+
+| doctor_id | name                 | specialty        | phone_number | email                         |
++-----------+----------------------+------------------+--------------+-------------------------------+
+|         1 | Dr. John Smith       | Cardiology       | 1234567890   | john.smith@hospital.com       |
+|         2 | Dr. Emily Brown      | Dermatology      | 9876543210   | emily.brown@hospital.com      |
+|         3 | Dr. David Johnson    | Neurology        | 5678901234   | david.johnson@hospital.com    |
+|         4 | Dr. Sarah Lee        | Pediatrics       | 3456789012   | sarah.lee@hospital.com        |
+|         5 | Dr. Michael Taylor   | Orthopedics      | 4567890123   | michael.taylor@hospital.com   |
+|         6 | Dr. Olivia White     | General Medicine | 6789012345   | olivia.white@hospital.com     |
+|         7 | Dr. Daniel Harris    | Oncology         | 7890123456   | daniel.harris@hospital.com    |
+|         8 | Dr. Sophia Wilson    | Psychiatry       | 8901234567   | sophia.wilson@hospital.com    |
+|         9 | Dr. William Martinez | Ophthalmology    | 9012345678   | william.martinez@hospital.com |
+|        10 | Dr. Ava Clark        | ENT              | 1023456789   | ava.clark@hospital.com        |
++-----------+----------------------+------------------+--------------+-------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from appointments;
++----------------+-----------+------------+------------------+------------------------------------+
+| appointment_id | doctor_id | patient_id | appointment_date | symptoms                           |
++----------------+-----------+------------+------------------+------------------------------------+
+|              1 |         1 |          1 | 2025-01-28       | Chest pain and shortness of breath |
+|              2 |         2 |          2 | 2025-01-30       | Skin rash and irritation           |
+|              3 |         3 |          3 | 2025-02-01       | Severe headache and dizziness      |
+|              4 |         4 |          4 | 2025-02-02       | Fever and sore throat              |
+|              5 |         5 |          5 | 2025-02-03       | Back pain and stiffness            |
+|              6 |         1 |          6 | 2025-02-04       | General weakness and fatigue       |
+|              7 |         2 |          7 | 2025-02-05       | Lump in neck                       |
+|              8 |         3 |          8 | 2025-02-06       | Anxiety and insomnia               |
+|              9 |         4 |          1 | 2025-02-07       | Blurred vision                     |
+|             10 |         5 |          1 | 2025-02-08       | Ear pain and dizziness             |
+|             11 |         1 |          1 | 2025-01-28       | Chest pain and shortness of breath |
+|             12 |         2 |          2 | 2025-01-30       | Skin rash and irritation           |
+|             13 |         3 |          3 | 2025-02-01       | Severe headache and dizziness      |
+|             14 |         4 |          4 | 2025-02-02       | Fever and sore throat              |
+|             15 |         5 |          5 | 2025-02-03       | Back pain and stiffness            |
+|             16 |         1 |          6 | 2025-02-04       | General weakness and fatigue       |
+|             17 |         2 |          7 | 2025-02-05       | Lump in neck                       |
+|             18 |         3 |          8 | 2025-02-06       | Anxiety and insomnia               |
+|             19 |         4 |          1 | 2025-02-07       | Blurred vision                     |
+|             20 |         5 |          1 | 2025-02-08       | Ear pain and dizziness             |
++----------------+-----------+------------+------------------+------------------------------------+
+20 rows in set (0.00 sec)
+
+mysql> select * from billing;
+Empty set (0.00 sec)
+
+mysql> select * from billing;
++---------+------------+----------------+------------------+---------------+--------------+
+| bill_id | patient_id | appointment_id | medicine_charges | other_charges | payment_date |
++---------+------------+----------------+------------------+---------------+--------------+
+|       1 |          1 |              1 |           500.00 |        150.00 | 2025-01-28   |
+|       2 |          2 |              2 |           300.00 |        100.00 | 2025-01-30   |
+|       3 |          3 |              3 |           700.00 |        200.00 | 2025-02-01   |
+|       4 |          4 |              4 |           400.00 |        120.00 | 2025-02-02   |
+|       5 |          5 |              5 |           350.00 |         80.00 | 2025-02-03   |
+|       6 |          6 |              6 |           600.00 |        220.00 | 2025-02-04   |
+|       7 |          7 |              7 |           800.00 |        250.00 | 2025-02-05   |
+|       8 |          8 |              8 |           450.00 |        150.00 | 2025-02-06   |
+|       9 |          1 |              9 |           550.00 |        170.00 | 2025-02-07   |
+|      10 |          1 |             10 |           500.00 |        180.00 | 2025-02-08   |
++---------+------------+----------------+------------------+---------------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> delete from appointments
+    -> where appointment_id > 10;
+Query OK, 10 rows affected (0.02 sec)
+
+mysql> select * from appointments;
++----------------+-----------+------------+------------------+------------------------------------+
+| appointment_id | doctor_id | patient_id | appointment_date | symptoms                           |
++----------------+-----------+------------+------------------+------------------------------------+
+|              1 |         1 |          1 | 2025-01-28       | Chest pain and shortness of breath |
+|              2 |         2 |          2 | 2025-01-30       | Skin rash and irritation           |
+|              3 |         3 |          3 | 2025-02-01       | Severe headache and dizziness      |
+|              4 |         4 |          4 | 2025-02-02       | Fever and sore throat              |
+|              5 |         5 |          5 | 2025-02-03       | Back pain and stiffness            |
+|              6 |         1 |          6 | 2025-02-04       | General weakness and fatigue       |
+|              7 |         2 |          7 | 2025-02-05       | Lump in neck                       |
+|              8 |         3 |          8 | 2025-02-06       | Anxiety and insomnia               |
+|              9 |         4 |          1 | 2025-02-07       | Blurred vision                     |
+|             10 |         5 |          1 | 2025-02-08       | Ear pain and dizziness             |
++----------------+-----------+------------+------------------+------------------------------------+
+10 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> exit
+Bye
+PS C:\Users\Devan>
