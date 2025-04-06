@@ -2,6 +2,69 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Exp51",
+      "request": "launch",
+      "mainClass": "Exp51",
+      "projectName": "College_416c21ab"
+    },
+    {
+      "type": "java",
+      "name": "Exp50",
+      "request": "launch",
+      "mainClass": "Exp50",
+      "projectName": "College_416c21ab"
+    },
+    {
+      "type": "java",
+      "name": "Exp49",
+      "request": "launch",
+      "mainClass": "Exp49",
+      "projectName": "College_416c21ab"
+    },
+    {
+      "type": "java",
+      "name": "Exp48",
+      "request": "launch",
+      "mainClass": "Exp48",
+      "projectName": "College_416c21ab"
+    },
+    {
+      "type": "java",
+      "name": "Exp47",
+      "request": "launch",
+      "mainClass": "Exp47",
+      "projectName": "College_416c21ab"
+    },
+    {
+      "type": "java",
+      "name": "Exp46",
+      "request": "launch",
+      "mainClass": "Exp46",
+      "projectName": "College_416c21ab"
+    },
+    {
+      "type": "java",
+      "name": "Exp45",
+      "request": "launch",
+      "mainClass": "Exp45",
+      "projectName": "College_416c21ab"
+    },
+    {
+      "type": "java",
+      "name": "Exp44",
+      "request": "launch",
+      "mainClass": "Exp44",
+      "projectName": "College_416c21ab"
+    },
+    {
+      "type": "java",
+      "name": "Exp32",
+      "request": "launch",
+      "mainClass": "Week4.Exp32",
+      "projectName": "College_416c21ab"
+    },
+    {
+      "type": "java",
       "name": "Exp31",
       "request": "launch",
       "mainClass": "Week4.Exp31",
